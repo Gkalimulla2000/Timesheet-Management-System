@@ -34,13 +34,10 @@ public void changePassword(@RequestBody Employee emp) {
 	
 	EmployeeService.updateEmp(emp);
 }
-@GetMapping(value="/emp/changePassword/{empId}")
+@PostMapping(value="/emp/changePassword/{empId}")
 @ResponseBody
-public String changePassword(@RequestParam String empPassword,@PathVariable Long empId) {
+public void changePassword(@RequestParam String empPassword,@PathVariable Long empId) {
 	EmployeeService.changePassword(empPassword,empId);
-	return empPassword;
-}
-
-
 	
+}	
 }

@@ -36,12 +36,14 @@ Employee employee=new Employee();
 	@Override
 	public void changePassword(String empPassword, Long empId) {
 		// TODO Auto-generated method stub
-		List<Employee> emp=(List<Employee>) EmployeeRepository.findAll();
-		for(Employee id:emp) {
+		Employee emp= EmployeeRepository.findById(empId).get();
+		emp.setEmpPassword(empPassword);
+		EmployeeRepository.save(emp);
+	/*	for(Employee id:emp) {
 			if(id.equals(empId)) {
 				
 				EmployeeRepository.changePassword(empPassword);
 			}
-		}
+		}  */
 	}
 }

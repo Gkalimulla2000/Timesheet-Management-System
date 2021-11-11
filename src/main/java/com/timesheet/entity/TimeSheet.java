@@ -36,6 +36,9 @@ public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Da
 	this.tsNotes = tsNotes;
 	this.tsFeedback = tsFeedback;
 }
+public TimeSheet() {
+	// TODO Auto-generated constructor stub
+}
 public Long getTsId() {
 	return tsId;
 }

@@ -46,4 +46,30 @@ Employee employee=new Employee();
 			}
 		}  */
 	}
+
+	@Override
+	public List<Employee> getLeave() {
+		
+		return null;
+	}
+
+	@Override
+	public List<Employee> getMonthLeaveReport() {
+		
+		return null;
+	}
+
+	@Override
+	public void deleteAllEmployees() {
+		
+		EmployeeRepository.deleteAll(EmployeeRepository.findAll());
+		
+	}
+
+	@Override
+	public void deleteEmployeeByID(int empId) {
+		// TODO Auto-generated method stub
+		
+		EmployeeRepository.deleteById(empId);
+	}
 }

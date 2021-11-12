@@ -2,6 +2,7 @@ package com.timesheet.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,16 +12,27 @@ import javax.persistence.Table;
 public class Employee {
 	
 @Id
+@Column(name="EMP_ID")
 Long empId;
+@Column(name="EMP_NAME")
 String empName;
+@Column(name="EMP_DESIGNATION_ID")
 String empDesignationId;
+@Column(name="EMP_JOIN_DATE")
 Date empJoinDate;
+@Column(name="EMP_SKILLS")
 String empSkills;
+@Column(name="EMP_DEPARTMENT_ID")
 String empDepartmentId;
+@Column(name="EMP_NOTES")
 String empNotes;
+@Column(name="EMP_EMIAL")
 String empEmail;
+@Column(name="EMP_PHONE")
 String empPhone;
+@Column(name="EMP_USENAME")
 String empUserName;
+@Column(name="EMP_PASSWORD")
 String empPassword;
 public Employee(Long empId, String empName, String empDesignationId, Date empJoinDate, String empSkills,
 		String empDepartmentId, String empNotes, String empEmail, String empPhone, String empUserName,

@@ -2,6 +2,7 @@ package com.timesheet.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,20 +14,35 @@ enum STATUS{
 @Table(name="Project")
 public class Project {
 @Id
+@Column(name="PRJ_ID")
 Long prjId;
+@Column(name="PRJ_NAME")
 String prjName;
+@Column(name="PRJ_CLIENT_NAME")
 String prjClientName;
+@Column(name="PRJ_CLIENT_BRIEF")
 String prjClientBrief;
+@Column(name="PRJ_MANAGER")
 String prjClientManager;
+@Column(name="PRJ_EMIALID")
 String prjClientEmailId;
+@Column(name="PRJ_OS_ID")
 String prjOsId;
+@Column(name="PRJ_DB_ID")
 String prjDbIj;
+@Column(name="PRJ_APP_SERVER_ID")
 String prjAppServerId;
+@Column(name="PRJ_PM_NAME")
 String prjPmName;
+@Column(name="PRJ_PL")
 String prjPl;
+@Column(name="PRJ_NOTES")
 String prjNotes;
+@Column(name="PRJ_START_DATE")
 Date prjStartDate;
+@Column(name="PRJ_END_DATE")
 Date prjEndDate;
+@Column(name="PRJ_STATUS")
 STATUS status;
 public Project(Long prjId, String prjName, String prjClientName, String prjClientBrief, String prjClientManager,
 		String prjClientEmailId, String prjOsId, String prjDbIj, String prjAppServerId, String prjPmName, String prjPl,

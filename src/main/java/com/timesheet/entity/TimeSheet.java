@@ -2,6 +2,7 @@ package com.timesheet.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,16 +11,27 @@ import javax.persistence.Table;
 @Table(name="TimeSheet")
 public class TimeSheet {
 @Id
+@Column(name="TS_ID")
 Long tsId;
+
 Project prjId;
+
 Employee empId;
+@Column(name="TS_ACTIVITY")
 String tsActivity;
+@Column(name="TS_DATE")
 Date tsDate;
+@Column(name="TS_NO_OF_HRS")
 String tsNoOfHrs;
+@Column(name="TS_APPROVED")
 String tsApproved;
+@Column(name="TS_APPROVED_BY")
 String tsApprovedBy;
+@Column(name="TS_REJECTED_REASONS")
 String tsRejectedReasons;
+@Column(name="TS_NOTES")
 String tsNotes;
+@Column(name="TS_FEEDBACK")
 String tsFeedback;
 public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
 		String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsFeedback) {

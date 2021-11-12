@@ -1,5 +1,6 @@
 package com.timesheet.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,11 +9,17 @@ import javax.persistence.Table;
 @Table(name="Team")
 public class Team {
 	@Id
+	@Column(name="TEAM_ID",length=10)
 	Long teamId;
+	@Column(name="TEAM_NAME",length=20)
 	String teamName;
+	@Column(name="TEAM_LEADER",length=20)
 	String teamLeader;
+	@Column(name="TEAM_NOTES",length=50)
 	String teamNotes;
+	
 	Project prjId;
+	@Column(name="TEAM_MEMBERS",length=50)
 	String teamMembers;
 	public Team(Long teamId, String teamName, String teamLeader, String teamNotes, Project prjId, String teamMembers) {
 		super();

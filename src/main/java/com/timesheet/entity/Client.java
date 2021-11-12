@@ -2,6 +2,8 @@ package com.timesheet.entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -9,11 +11,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Client")
 public class Client {
-
+@Id
 Long clientId;
 String clientName;
 String clientAddress;
 String clientEmailId;
+
 Project prjName;
 
 

@@ -55,6 +55,162 @@ public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Da
 	this.tsOtherActivity = tsOtherActivity;
 	this.tsFeedback = tsFeedback;
 }
+/**
+ * @return the tsId
+ */
+public Long getTsId() {
+	return tsId;
+}
+/**
+ * @param tsId the tsId to set
+ */
+public void setTsId(Long tsId) {
+	this.tsId = tsId;
+}
+/**
+ * @return the prjId
+ */
+public Project getPrjId() {
+	return prjId;
+}
+/**
+ * @param prjId the prjId to set
+ */
+public void setPrjId(Project prjId) {
+	this.prjId = prjId;
+}
+/**
+ * @return the empId
+ */
+public Employee getEmpId() {
+	return empId;
+}
+/**
+ * @param empId the empId to set
+ */
+public void setEmpId(Employee empId) {
+	this.empId = empId;
+}
+/**
+ * @return the tsActivity
+ */
+public String getTsActivity() {
+	return tsActivity;
+}
+/**
+ * @param tsActivity the tsActivity to set
+ */
+public void setTsActivity(String tsActivity) {
+	this.tsActivity = tsActivity;
+}
+/**
+ * @return the tsDate
+ */
+public Date getTsDate() {
+	return tsDate;
+}
+/**
+ * @param tsDate the tsDate to set
+ */
+public void setTsDate(Date tsDate) {
+	this.tsDate = tsDate;
+}
+/**
+ * @return the tsNoOfHrs
+ */
+public String getTsNoOfHrs() {
+	return tsNoOfHrs;
+}
+/**
+ * @param tsNoOfHrs the tsNoOfHrs to set
+ */
+public void setTsNoOfHrs(String tsNoOfHrs) {
+	this.tsNoOfHrs = tsNoOfHrs;
+}
+/**
+ * @return the tsApproved
+ */
+public String getTsApproved() {
+	return tsApproved;
+}
+/**
+ * @param tsApproved the tsApproved to set
+ */
+public void setTsApproved(String tsApproved) {
+	this.tsApproved = tsApproved;
+}
+/**
+ * @return the tsApprovedBy
+ */
+public String getTsApprovedBy() {
+	return tsApprovedBy;
+}
+/**
+ * @param tsApprovedBy the tsApprovedBy to set
+ */
+public void setTsApprovedBy(String tsApprovedBy) {
+	this.tsApprovedBy = tsApprovedBy;
+}
+/**
+ * @return the tsRejectedReasons
+ */
+public String getTsRejectedReasons() {
+	return tsRejectedReasons;
+}
+/**
+ * @param tsRejectedReasons the tsRejectedReasons to set
+ */
+public void setTsRejectedReasons(String tsRejectedReasons) {
+	this.tsRejectedReasons = tsRejectedReasons;
+}
+/**
+ * @return the tsNotes
+ */
+public String getTsNotes() {
+	return tsNotes;
+}
+/**
+ * @param tsNotes the tsNotes to set
+ */
+public void setTsNotes(String tsNotes) {
+	this.tsNotes = tsNotes;
+}
+/**
+ * @return the tsSuggestions
+ */
+public String getTsSuggestions() {
+	return tsSuggestions;
+}
+/**
+ * @param tsSuggestions the tsSuggestions to set
+ */
+public void setTsSuggestions(String tsSuggestions) {
+	this.tsSuggestions = tsSuggestions;
+}
+/**
+ * @return the tsOtherActivity
+ */
+public String getTsOtherActivity() {
+	return tsOtherActivity;
+}
+/**
+ * @param tsOtherActivity the tsOtherActivity to set
+ */
+public void setTsOtherActivity(String tsOtherActivity) {
+	this.tsOtherActivity = tsOtherActivity;
+}
+/**
+ * @return the tsFeedback
+ */
+public String getTsFeedback() {
+	return tsFeedback;
+}
+/**
+ * @param tsFeedback the tsFeedback to set
+ */
+public void setTsFeedback(String tsFeedback) {
+	this.tsFeedback = tsFeedback;
+}
 
 
 }

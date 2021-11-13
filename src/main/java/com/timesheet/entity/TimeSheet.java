@@ -11,30 +11,35 @@ import javax.persistence.Table;
 @Table(name="TimeSheet")
 public class TimeSheet {
 @Id
-@Column(name="TS_ID")
+@Column(name="TS_ID",length=10)
 Long tsId;
 
 Project prjId;
 
 Employee empId;
-@Column(name="TS_ACTIVITY")
+@Column(name="TS_ACTIVITY",length=20)
 String tsActivity;
 @Column(name="TS_DATE")
 Date tsDate;
-@Column(name="TS_NO_OF_HRS")
+@Column(name="TS_NO_OF_HRS",length=10)
 String tsNoOfHrs;
-@Column(name="TS_APPROVED")
+@Column(name="TS_APPROVED",length=20)
 String tsApproved;
-@Column(name="TS_APPROVED_BY")
+@Column(name="TS_APPROVED_BY",length=20)
 String tsApprovedBy;
-@Column(name="TS_REJECTED_REASONS")
+@Column(name="TS_REJECTED_REASONS",length=30)
 String tsRejectedReasons;
-@Column(name="TS_NOTES")
+@Column(name="TS_NOTES",length=30)
 String tsNotes;
-@Column(name="TS_FEEDBACK")
+@Column(name="TS_SUGGESTIONS",length=30)
+String tsSuggestions;
+@Column(name="TS_OTHER_ACTIVITY",length=30)
+String tsOtherActivity;
+@Column(name="TS_FEEDBACK",length=20)
 String tsFeedback;
 public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
-		String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsFeedback) {
+		String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsSuggestions,
+		String tsOtherActivity, String tsFeedback) {
 	super();
 	this.tsId = tsId;
 	this.prjId = prjId;
@@ -46,82 +51,10 @@ public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Da
 	this.tsApprovedBy = tsApprovedBy;
 	this.tsRejectedReasons = tsRejectedReasons;
 	this.tsNotes = tsNotes;
+	this.tsSuggestions = tsSuggestions;
+	this.tsOtherActivity = tsOtherActivity;
 	this.tsFeedback = tsFeedback;
 }
-public TimeSheet() {
-	// TODO Auto-generated constructor stub
-}
-public Long getTsId() {
-	return tsId;
-}
-public void setTsId(Long tsId) {
-	this.tsId = tsId;
-}
-public Project getPrjId() {
-	return prjId;
-}
-public void setPrjId(Project prjId) {
-	this.prjId = prjId;
-}
-public Employee getEmpId() {
-	return empId;
-}
-public void setEmpId(Employee empId) {
-	this.empId = empId;
-}
-public String getTsActivity() {
-	return tsActivity;
-}
-public void setTsActivity(String tsActivity) {
-	this.tsActivity = tsActivity;
-}
-public Date getTsDate() {
-	return tsDate;
-}
-public void setTsDate(Date tsDate) {
-	this.tsDate = tsDate;
-}
-public String getTsNoOfHrs() {
-	return tsNoOfHrs;
-}
-public void setTsNoOfHrs(String tsNoOfHrs) {
-	this.tsNoOfHrs = tsNoOfHrs;
-}
-public String getTsApproved() {
-	return tsApproved;
-}
-public void setTsApproved(String tsApproved) {
-	this.tsApproved = tsApproved;
-}
-public String getTsApprovedBy() {
-	return tsApprovedBy;
-}
-public void setTsApprovedBy(String tsApprovedBy) {
-	this.tsApprovedBy = tsApprovedBy;
-}
-public String getTsRejectedReasons() {
-	return tsRejectedReasons;
-}
-public void setTsRejectedReasons(String tsRejectedReasons) {
-	this.tsRejectedReasons = tsRejectedReasons;
-}
-public String getTsNotes() {
-	return tsNotes;
-}
-public void setTsNotes(String tsNotes) {
-	this.tsNotes = tsNotes;
-}
-public String getTsFeedback() {
-	return tsFeedback;
-}
-public void setTsFeedback(String tsFeedback) {
-	this.tsFeedback = tsFeedback;
-}
-@Override
-public String toString() {
-	return "TimeSheet [tsId=" + tsId + ", prjId=" + prjId + ", empId=" + empId + ", tsActivity=" + tsActivity
-			+ ", tsDate=" + tsDate + ", tsNoOfHrs=" + tsNoOfHrs + ", tsApproved=" + tsApproved + ", tsApprovedBy="
-			+ tsApprovedBy + ", tsRejectedReasons=" + tsRejectedReasons + ", tsNotes=" + tsNotes + ", tsFeedback="
-			+ tsFeedback + "]";
-}
+
+
 }

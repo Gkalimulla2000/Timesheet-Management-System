@@ -12,27 +12,27 @@ import javax.persistence.Table;
 public class Employee {
 	
 @Id
-@Column(name="EMP_ID")
+@Column(name="EMP_ID",length=10)
 Long empId;
-@Column(name="EMP_NAME")
+@Column(name="EMP_NAME",length=20)
 String empName;
-@Column(name="EMP_DESIGNATION_ID")
+@Column(name="EMP_DESIGNATION_ID",length=10)
 String empDesignationId;
 @Column(name="EMP_JOIN_DATE")
 Date empJoinDate;
-@Column(name="EMP_SKILLS")
+@Column(name="EMP_SKILLS",length=20)
 String empSkills;
-@Column(name="EMP_DEPARTMENT_ID")
+@Column(name="EMP_DEPARTMENT_ID",length=20)
 String empDepartmentId;
-@Column(name="EMP_NOTES")
+@Column(name="EMP_NOTES",length=50)
 String empNotes;
-@Column(name="EMP_EMIAL")
+@Column(name="EMP_EMIAL",length=20)
 String empEmail;
-@Column(name="EMP_PHONE")
+@Column(name="EMP_PHONE",length=20)
 String empPhone;
-@Column(name="EMP_USENAME")
+@Column(name="EMP_USENAME",length=20)
 String empUserName;
-@Column(name="EMP_PASSWORD")
+@Column(name="EMP_PASSWORD",length=20)
 String empPassword;
 public Employee(Long empId, String empName, String empDesignationId, Date empJoinDate, String empSkills,
 		String empDepartmentId, String empNotes, String empEmail, String empPhone, String empUserName,

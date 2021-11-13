@@ -14,35 +14,35 @@ enum STATUS{
 @Table(name="Project")
 public class Project {
 @Id
-@Column(name="PRJ_ID")
+@Column(name="PRJ_ID",length=10)
 Long prjId;
-@Column(name="PRJ_NAME")
+@Column(name="PRJ_NAME",length=20)
 String prjName;
-@Column(name="PRJ_CLIENT_NAME")
+@Column(name="PRJ_CLIENT_NAME",length=10)
 String prjClientName;
-@Column(name="PRJ_CLIENT_BRIEF")
+@Column(name="PRJ_CLIENT_BRIEF",length=10)
 String prjClientBrief;
-@Column(name="PRJ_MANAGER")
+@Column(name="PRJ_CLIENT_MANAGER",length=20)
 String prjClientManager;
-@Column(name="PRJ_EMIALID")
+@Column(name="PRJ_CLIENT_EMIALID",length=20)
 String prjClientEmailId;
-@Column(name="PRJ_OS_ID")
+@Column(name="PRJ_OS_ID",length=50)
 String prjOsId;
-@Column(name="PRJ_DB_ID")
+@Column(name="PRJ_DB_ID",length=20)
 String prjDbIj;
-@Column(name="PRJ_APP_SERVER_ID")
+@Column(name="PRJ_APP_SERVER_ID",length=20)
 String prjAppServerId;
-@Column(name="PRJ_PM_NAME")
+@Column(name="PRJ_PM_NAME",length=20)
 String prjPmName;
-@Column(name="PRJ_PL")
+@Column(name="PRJ_PL",length=20)
 String prjPl;
-@Column(name="PRJ_NOTES")
+@Column(name="PRJ_NOTES",length=50)
 String prjNotes;
 @Column(name="PRJ_START_DATE")
 Date prjStartDate;
 @Column(name="PRJ_END_DATE")
 Date prjEndDate;
-@Column(name="PRJ_STATUS")
+@Column(name="PRJ_STATUS",length=20)
 STATUS status;
 public Project(Long prjId, String prjName, String prjClientName, String prjClientBrief, String prjClientManager,
 		String prjClientEmailId, String prjOsId, String prjDbIj, String prjAppServerId, String prjPmName, String prjPl,

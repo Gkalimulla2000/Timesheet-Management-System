@@ -3,6 +3,8 @@ package com.timesheet.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +19,8 @@ public class Team {
 	String teamLeader;
 	@Column(name="TEAM_NOTES",length=50)
 	String teamNotes;
-	
+	@OneToOne
+	@JoinColumn(name="TEAM_PROJ")
 	Project prjId;
 	@Column(name="TEAM_MEMBERS",length=50)
 	String teamMembers;

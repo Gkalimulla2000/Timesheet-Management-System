@@ -1,9 +1,10 @@
 package com.timesheet.entity;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -12,11 +13,15 @@ import javax.persistence.Table;
 @Table(name="Client")
 public class Client {
 @Id
+@Column(name="CLIENT_ID",nullable=false)
 Long clientId;
+@Column(name="CLIENT_NAME",nullable=false)
 String clientName;
+@Column(name="CLIENT_ADDRESS",nullable=false)
 String clientAddress;
+@Column(name="CLIENT_EMAIL_ID",nullable=false)
 String clientEmailId;
-
+@OneToOne
 Project prjName;
 
 

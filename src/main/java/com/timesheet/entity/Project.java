@@ -64,6 +64,9 @@ public Project(Long prjId, String prjName, String prjClientName, String prjClien
 	this.prjEndDate = prjEndDate;
 	this.status = status;
 }
+public Project() {
+	// TODO Auto-generated constructor stub
+}
 public Long getPrjId() {
 	return prjId;
 }

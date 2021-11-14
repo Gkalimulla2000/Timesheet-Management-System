@@ -61,7 +61,7 @@ EmployeeService.deleteAllEmployees();
 
 
 @DeleteMapping("employees/{id}")
-public void deleteEmployeeByID(@RequestBody Employee e, @PathVariable int id){
+public void deleteEmployeeByID(@RequestBody Employee e, @PathVariable Long id){
 EmployeeService.deleteEmployeeByID(id);
 }
 

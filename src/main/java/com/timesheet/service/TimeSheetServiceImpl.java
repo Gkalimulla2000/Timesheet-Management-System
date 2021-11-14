@@ -1,6 +1,7 @@
 package com.timesheet.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.timesheet.dao.TimeSheetRepository;
 import com.timesheet.entity.Employee;
+import com.timesheet.entity.Project;
 import com.timesheet.entity.TimeSheet;
 
 
@@ -18,9 +20,18 @@ public class TimeSheetServiceImpl implements TimeSheetService {
 private TimeSheetRepository TimeSheetRepository;
 TimeSheet timesheet = new TimeSheet();
 @Override
-public void DailyTimesheet(Employee empId, String prjName, String Date, List<Integer> tsNoOfHrs, String typeOfWork,String discription)
+public void DailyTimesheet(Employee empId, List<Project> prjId, Date Date, String tsNoOfHrs, String typeOfWork,String discription)
 {
-TimeSheetRepository.save(empId,prjName,Date,tsNoOfHrs,typeOfWork,discription);
+	timesheet.setEmpId(empId);
+	timesheet.setPrjId(prjId);
+	timesheet.setTsDate(Date);
+	timesheet.setTsNoOfHrs(tsNoOfHrs);
+	timesheet.setTsActivity(typeOfWork);
+	timesheet.setTsNotes(discription);
+	TimeSheetRepository.save(timesheet);
+	
+	
+//TimeSheetRepository.save(empId,prjName,Date,tsNoOfHrs,typeOfWork,discription);
 }
 @Override
 public ArrayList<TimeSheet> getAllListOfTimesheet(Employee empId) {
@@ -34,8 +45,12 @@ TimeSheetRepository.save(TimeSheet);
 
 }
 @Override
-public void approveWeekSheet(String Date, Employee empId, String prjName) {
+public void approveWeekSheet(Date Date, Employee empId, List<Project> prjId) {
 // TODO Auto-generated method stub
-TimeSheetRepository.save(Date, empId,prjName);
+	timesheet.setTsDate(Date);
+	timesheet.setPrjId(prjId);
+	timesheet.setEmpId(empId);
+	
+TimeSheetRepository.save(timesheet);
 }
 }

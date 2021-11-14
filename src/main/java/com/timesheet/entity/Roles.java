@@ -3,11 +3,18 @@ package com.timesheet.entity;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class Roles {
-
+	@Id
+	@Column(name="ROLE_ID")
 	Long roleId;
-	List<String> roleName=Arrays.asList("admin","projectManager","softwareEngineer");
-	public Roles(Long roleId, List<String> roleName) {
+	
+	//List<String> roleName=Arrays.asList("admin","projectManager","softwareEngineer");
+	String roleName;
+	public Roles(Long roleId, String roleName) {
 		super();
 		this.roleId = roleId;
 		this.roleName = roleName;
@@ -27,13 +34,13 @@ public class Roles {
 	/**
 	 * @return the roleName
 	 */
-	public List<String> getRoleName() {
+	public String getRoleName() {
 		return roleName;
 	}
 	/**
 	 * @param roleName the roleName to set
 	 */
-	public void setRoleName(List<String> roleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 	

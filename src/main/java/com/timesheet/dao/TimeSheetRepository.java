@@ -11,12 +11,11 @@ import com.timesheet.entity.TimeSheet;
 
 
 public interface TimeSheetRepository extends CrudRepository<TimeSheet,Long>{
-@Query("Select * from TimeSheet where e.empId='empid'")
-void updateTimeSheet(TimeSheet TimeSheet);
 
-void save(Employee empId, String prjName, String date, List<Integer> tsNoOfHrs, String typeOfWork, String discription);
 
-void save(String date, Employee empId, String prjName);
+//void save(Employee empId, String prjName, String date, List<Integer> tsNoOfHrs, String typeOfWork, String discription);
+
+//void save(String date, Employee empId, String prjName);
 
 
 

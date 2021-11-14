@@ -15,5 +15,5 @@ public interface EmployeeService {
 	public List<Employee> getLeave();
 	public List<Employee> getMonthLeaveReport();
 	public void deleteAllEmployees();
-	public void deleteEmployeeByID(int id);
+	public void deleteEmployeeByID(Long id);
 }

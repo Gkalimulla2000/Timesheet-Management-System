@@ -1,10 +1,15 @@
 package com.timesheet.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,9 +18,12 @@ public class TimeSheet {
 @Id
 @Column(name="TS_ID",length=10)
 Long tsId;
+@OneToMany
+@JoinColumn(name="TIMESHEET_PRJ")
+List<Project> prjId;
 
-Project prjId;
-
+@ManyToOne(targetEntity = Employee.class,cascade=CascadeType.ALL)
+@JoinColumn(name="EMP_TIMESHEET")
 Employee empId;
 @Column(name="TS_ACTIVITY",length=20)
 String tsActivity;
@@ -37,7 +45,8 @@ String tsSuggestions;
 String tsOtherActivity;
 @Column(name="TS_FEEDBACK",length=20)
 String tsFeedback;
-public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
+
+public TimeSheet(Long tsId, List<Project> prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
 		String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsSuggestions,
 		String tsOtherActivity, String tsFeedback) {
 	super();
@@ -55,6 +64,9 @@ public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Da
 	this.tsOtherActivity = tsOtherActivity;
 	this.tsFeedback = tsFeedback;
 }
+public TimeSheet() {
+	// TODO Auto-generated constructor stub
+}
 /**
  * @return the tsId
  */
@@ -67,16 +79,17 @@ public Long getTsId() {
 public void setTsId(Long tsId) {
 	this.tsId = tsId;
 }
+
 /**
  * @return the prjId
  */
-public Project getPrjId() {
+public List<Project> getPrjId() {
 	return prjId;
 }
 /**
  * @param prjId the prjId to set
  */
-public void setPrjId(Project prjId) {
+public void setPrjId(List<Project> prjId) {
 	this.prjId = prjId;
 }
 /**

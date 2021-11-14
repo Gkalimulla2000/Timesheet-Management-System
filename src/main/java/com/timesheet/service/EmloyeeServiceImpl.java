@@ -67,9 +67,9 @@ Employee employee=new Employee();
 	}
 
 	@Override
-	public void deleteEmployeeByID(int empId) {
+	public void deleteEmployeeByID(Long empId) {
 		// TODO Auto-generated method stub
 		
-		EmployeeRepository.deleteById(empId);
+		EmployeeRepository.deleteById( empId);
 	}
 }

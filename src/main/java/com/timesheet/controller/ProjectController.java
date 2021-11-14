@@ -1,10 +1,7 @@
 package com.timesheet.controller;
 
 import java.util.ArrayList;
-import java.util.List;
-
-
-
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
-import com.timesheet.entity.Employee;
 import com.timesheet.entity.Project;
 import com.timesheet.service.ProjectService;
 
@@ -49,7 +43,7 @@ ProjectService.updatePrj(prj);
 }
 
 @PostMapping()
-public void insertProjectDates(@RequestBody Project prjStartDate, Project prjEndDate) {
+public void insertProjectDates(@RequestBody Date prjStartDate, Date prjEndDate) {
 ProjectService.insertProjectDates(prjStartDate, prjEndDate);
 }
 

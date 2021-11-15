@@ -33,23 +33,23 @@ return ProjectService.getProjectBrief();
 }
 
 @PostMapping("/addPrj")
-public void addPrj(@RequestBody Project prj) {
-ProjectService.insertPrj(prj);
+public void addPrj(@RequestBody Project project) {
+ProjectService.insertPrj(project);
 }
 
 @PutMapping(value="/prj/updatePrj")
-public void updatePrj(@RequestBody Project prj) {
-ProjectService.updatePrj(prj);
+public void updatePrj(@RequestBody Project project) {
+ProjectService.updatePrj(project);
 }
 
-@PostMapping()
+@PostMapping("/insertProjectDates")
 public void insertProjectDates(@RequestBody Date prjStartDate, Date prjEndDate) {
 ProjectService.insertProjectDates(prjStartDate, prjEndDate);
 }
 
-@PutMapping()
-public void ProjectStatus(@RequestBody Project projectStatus) {
-ProjectService.ProjectStatus(projectStatus);
+@PutMapping("/ProjectStatus")
+public void ProjectStatus(@RequestBody Long prjId) {
+ProjectService.ProjectStatus(prjId);
 }
 
 

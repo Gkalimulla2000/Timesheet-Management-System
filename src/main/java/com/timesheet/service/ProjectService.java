@@ -13,7 +13,7 @@ public interface ProjectService {
 public ArrayList<Project> getAllProjects();//
 public void insertPrj(Project project);//
 public void updatePrj(Project prj);//
-public Enum ProjectStatus(Project p);
+public Enum ProjectStatus(Long prjId);
 public void insertProjectDates(Date prjStartDate, Date prjEndDate);
 public String getProjectBrief();//
 

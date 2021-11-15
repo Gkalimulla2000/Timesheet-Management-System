@@ -2,74 +2,84 @@ package com.timesheet.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.timesheet.dao.EmployeeRepository;
 import com.timesheet.entity.Employee;
+
 @Service
 public class EmloyeeServiceImpl implements EmployeeService {
-@Autowired
-private EmployeeRepository EmployeeRepository;
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
-Employee employee=new Employee();
+	Employee employee = new Employee();
+
 	@Override
 	public ArrayList<Employee> getAllEmps() {
 		// TODO Auto-generated method stub
-		return (ArrayList<Employee>) EmployeeRepository.findAll();
+		return (ArrayList<Employee>) employeeRepository.findAll();
 	}
 
 	@Override
 	public void insertEmp(Employee e) {
-		// TODO Auto-generated method stub
-		
-		EmployeeRepository.save(e);
+
+		employeeRepository.save(e);
+	}
+
+	@Override
+	public Employee getEmpById(Long empId) {
+		Optional<Employee> employee = employeeRepository.findById(empId);
+	
+		return employee.get();
 	}
 
 	@Override
 	public void updateEmp(Employee emp) {
 		// TODO Auto-generated method stub
-		EmployeeRepository.save(emp);
-		
+		employeeRepository.save(emp);
+
 	}
+
 	@Override
 	public void changePassword(String empPassword, Long empId) {
 		// TODO Auto-generated method stub
-		Employee emp= EmployeeRepository.findById(empId).get();
+		Employee emp = employeeRepository.findById(empId).get();
 		emp.setEmpPassword(empPassword);
-		EmployeeRepository.save(emp);
-	/*	for(Employee id:emp) {
-			if(id.equals(empId)) {
-				
-				EmployeeRepository.changePassword(empPassword);
-			}
-		}  */
+		employeeRepository.save(emp);
+		/*
+		 * for(Employee id:emp) { if(id.equals(empId)) {
+		 * 
+		 * EmployeeRepository.changePassword(empPassword); } }
+		 */
 	}
 
 	@Override
 	public List<Employee> getLeave() {
-		
+
 		return null;
 	}
 
 	@Override
 	public List<Employee> getMonthLeaveReport() {
-		
+
 		return null;
 	}
 
 	@Override
 	public void deleteAllEmployees() {
-		
-		EmployeeRepository.deleteAll(EmployeeRepository.findAll());
-		
+
+		employeeRepository.deleteAll(employeeRepository.findAll());
+
 	}
 
 	@Override
 	public void deleteEmployeeByID(Long empId) {
 		// TODO Auto-generated method stub
-		
-		EmployeeRepository.deleteById( empId);
+
+		employeeRepository.deleteById(empId);
 	}
+
 }

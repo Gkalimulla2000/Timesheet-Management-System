@@ -12,69 +12,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.timesheet.entity.Employee;
+import com.timesheet.entity.Leave;
 import com.timesheet.service.EmployeeService;
-
-
-
+import com.timesheet.service.LeaveService;
+@RestController
 public class HrExecutiveController {
 
-@Autowired
-private EmployeeService EmployeeService;
+	@Autowired
+	private EmployeeService EmployeeService;
+	@Autowired
+	private LeaveService LeaveService;
 
+	@RequestMapping(value = "/getleave", method = RequestMethod.GET)
+	public List<Leave> getLeave() {
 
-@RequestMapping(value = "/getleave", method = RequestMethod.GET)
-public List<Employee> getLeave() {
+		return LeaveService.getAllLeave();
 
-return EmployeeService.getLeave();
+	}
 
+	@RequestMapping(value = "/getMonthLeaveReport", method = RequestMethod.GET)
+	public List<Employee> getMonthLeaveReport() {
+		return EmployeeService.getMonthLeaveReport();
+	}
 
+	@GetMapping("/HR/getAllEmpsDetails")
+	public ArrayList<Employee> getAllEmp() {
+		return EmployeeService.getAllEmps();
+	}
 
-}
+	@DeleteMapping("/HR/employees")
+	public void deleteAllEmployees() {
+		EmployeeService.deleteAllEmployees();
+	}
 
-@RequestMapping(value = "/getMonthLeaveReport", method = RequestMethod.GET)
-public List<Employee> getMonthLeaveReport() {
+	@DeleteMapping("/HR/employees/{id}")
+	public void deleteEmployeeByID(@RequestBody Employee e, @PathVariable Long id) {
+		EmployeeService.deleteEmployeeByID(id);
+	}
 
-
-
-return EmployeeService.getMonthLeaveReport();
-
-
-
-}
-
-
-
-@GetMapping("/getAllEmpsDetails")
-public ArrayList<Employee> getAllEmp(){
-return EmployeeService.getAllEmps();
-}
-
-
-@DeleteMapping("/employees")
-public void deleteAllEmployees(){
-EmployeeService.deleteAllEmployees();
-}
-
-
-
-
-@DeleteMapping("employees/{id}")
-public void deleteEmployeeByID(@RequestBody Employee e, @PathVariable Long id){
-EmployeeService.deleteEmployeeByID(id);
-}
-
-
-@GetMapping(value="/emp/changePassword/{empId}")
-@ResponseBody
-public String changePassword(@RequestParam String empPassword,@PathVariable Long empId) {
-EmployeeService.changePassword(empPassword,empId);
-return empPassword;
-}
-
-
-
-
+	@GetMapping(value = "/HR/emp/changePassword/{empId}")
+	@ResponseBody
+	public String changePassword(@RequestParam String empPassword, @PathVariable Long empId) {
+		EmployeeService.changePassword(empPassword, empId);
+		return empPassword;
+	}
 
 }

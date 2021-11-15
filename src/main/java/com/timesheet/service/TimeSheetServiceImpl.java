@@ -34,7 +34,7 @@ public void DailyTimesheet(Employee empId, List<Project> prjId, Date Date, Strin
 //TimeSheetRepository.save(empId,prjName,Date,tsNoOfHrs,typeOfWork,discription);
 }
 @Override
-public ArrayList<TimeSheet> getAllListOfTimesheet(Employee empId) {
+public ArrayList<TimeSheet> getAllListOfTimesheet(Long empId) {
 // TODO Auto-generated method stub
 return (ArrayList<TimeSheet>) TimeSheetRepository.findAll();
 }

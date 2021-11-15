@@ -22,15 +22,15 @@ public class TimeSheetController {
 @Autowired
 private TimeSheetService TimeSheetService;
 @GetMapping("/getAllListOfTimesheet")
-public ArrayList<TimeSheet> getAllListOfTimesheet(Employee empId){
+public ArrayList<TimeSheet> getAllListOfTimesheet(Long empId){
 return TimeSheetService.getAllListOfTimesheet(empId);
 }
 @PostMapping("/DailyTimesheet")
-public void DailyTimesheet(@RequestBody Employee empId, List<Project> prjName, Date Date, String tsNoOfHrs, String typeOfWork,String discription){
-TimeSheetService.DailyTimesheet(empId,prjName, Date,tsNoOfHrs,typeOfWork,discription);
+public void DailyTimesheet(@RequestBody Employee empId, List<Project> prjId, Date Date, String tsNoOfHrs, String typeOfWork,String discription){
+TimeSheetService.DailyTimesheet(empId,prjId, Date,tsNoOfHrs,typeOfWork,discription);
 }
 @PostMapping("/approveWeekSheet")
-public void approveWeekSheet(@RequestBody Date Date, Employee empId, List<Project> prjName) {
-TimeSheetService.approveWeekSheet(Date,empId,prjName);
+public void approveWeekSheet(@RequestBody Date Date, Employee empId, List<Project> prjId) {
+TimeSheetService.approveWeekSheet(Date,empId,prjId);
 }
 }

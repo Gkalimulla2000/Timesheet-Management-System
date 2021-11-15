@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +35,8 @@ String empPhone;
 String empUserName;
 @Column(name="EMP_PASSWORD",length=20)
 String empPassword;
+@OneToOne
+Roles role;
 public Employee(Long empId, String empName, String empDesignationId, Date empJoinDate, String empSkills,
 		String empDepartmentId, String empNotes, String empEmail, String empPhone, String empUserName,
 		String empPassword) {
@@ -49,6 +52,18 @@ public Employee(Long empId, String empName, String empDesignationId, Date empJoi
 	this.empPhone = empPhone;
 	this.empUserName = empUserName;
 	this.empPassword = empPassword;
+}
+/**
+ * @return the role
+ */
+public Roles getRole() {
+	return role;
+}
+/**
+ * @param role the role to set
+ */
+public void setRole(Roles role) {
+	this.role = role;
 }
 public Employee() {
 	// TODO Auto-generated constructor stub

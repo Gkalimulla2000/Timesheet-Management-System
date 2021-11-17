@@ -12,6 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Client")
 public class Client {
+public Client() {
+		// TODO Auto-generated constructor stub
+	}
+
 @Id
 @Column(name="CLIENT_ID",nullable=false)
 Long clientId;

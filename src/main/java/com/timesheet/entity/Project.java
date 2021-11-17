@@ -1,18 +1,20 @@
 package com.timesheet.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-enum STATUS{
-	Deleted,
-	Not;
-}
+/*enum STATUS{
+	
+	Not,Deleted;
+}*/
 @Entity
 @Table(name="Project")
-public class Project {
+public class Project implements Serializable{
+	private static final long serialVersionUID = 1L;
 @Id
 @Column(name="PRJ_ID",length=10)
 Long prjId;
@@ -43,10 +45,10 @@ Date prjStartDate;
 @Column(name="PRJ_END_DATE")
 Date prjEndDate;
 @Column(name="PRJ_STATUS",length=20)
-STATUS status;
+String status;
 public Project(Long prjId, String prjName, String prjClientName, String prjClientBrief, String prjClientManager,
 		String prjClientEmailId, String prjOsId, String prjDbIj, String prjAppServerId, String prjPmName, String prjPl,
-		String prjNotes, Date prjStartDate, Date prjEndDate, STATUS status) {
+		String prjNotes, Date prjStartDate, Date prjEndDate, String status) {
 	super();
 	this.prjId = prjId;
 	this.prjName = prjName;
@@ -65,7 +67,6 @@ public Project(Long prjId, String prjName, String prjClientName, String prjClien
 	this.status = status;
 }
 public Project() {
-	// TODO Auto-generated constructor stub
 }
 public Long getPrjId() {
 	return prjId;
@@ -151,10 +152,10 @@ public Date getPrjEndDate() {
 public void setPrjEndDate(Date prjEndDate) {
 	this.prjEndDate = prjEndDate;
 }
-public STATUS getStatus() {
+public String getStatus() {
 	return status;
 }
-public void setStatus(STATUS status) {
+public void setStatus(String status) {
 	this.status = status;
 }
 @Override

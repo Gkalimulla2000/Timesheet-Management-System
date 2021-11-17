@@ -1,229 +1,183 @@
 package com.timesheet.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name="TimeSheet")
-public class TimeSheet {
-@Id
-@Column(name="TS_ID",length=10)
-Long tsId;
-@OneToMany
-@JoinColumn(name="TIMESHEET_PRJ")
-List<Project> prjId;
+@Table(name = "TimeSheet")
+public class TimeSheet implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@Column(name = "TS_ID", length = 10)
+	Long tsId;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Project prjId;
+	@ManyToOne(targetEntity = Employee.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "EMP_TIMESHEET")
+	Employee empId;
+	@Column(name = "TS_ACTIVITY", length = 20)
+	String tsActivity;
+	@Column(name = "TS_DATE")
+	Date tsDate;
+	@Column(name = "TS_NO_OF_HRS", length = 10)
+	String tsNoOfHrs;
+	@Column(name = "TS_APPROVED", length = 20)
+	String tsApproved;
+	@Column(name = "TS_APPROVED_BY", length = 20)
+	String tsApprovedBy;
+	@Column(name = "TS_REJECTED_REASONS", length = 30)
+	String tsRejectedReasons;
+	@Column(name = "TS_NOTES", length = 30)
+	String tsNotes;
+	@Column(name = "TS_SUGGESTIONS", length = 30)
+	String tsSuggestions;
+	@Column(name = "TS_OTHER_ACTIVITY", length = 30)
+	String tsOtherActivity;
+	@Column(name = "TS_FEEDBACK", length = 20)
+	String tsFeedback;
 
-@ManyToOne(targetEntity = Employee.class,cascade=CascadeType.ALL)
-@JoinColumn(name="EMP_TIMESHEET")
-Employee empId;
-@Column(name="TS_ACTIVITY",length=20)
-String tsActivity;
-@Column(name="TS_DATE")
-Date tsDate;
-@Column(name="TS_NO_OF_HRS",length=10)
-String tsNoOfHrs;
-@Column(name="TS_APPROVED",length=20)
-String tsApproved;
-@Column(name="TS_APPROVED_BY",length=20)
-String tsApprovedBy;
-@Column(name="TS_REJECTED_REASONS",length=30)
-String tsRejectedReasons;
-@Column(name="TS_NOTES",length=30)
-String tsNotes;
-@Column(name="TS_SUGGESTIONS",length=30)
-String tsSuggestions;
-@Column(name="TS_OTHER_ACTIVITY",length=30)
-String tsOtherActivity;
-@Column(name="TS_FEEDBACK",length=20)
-String tsFeedback;
+	public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
+			String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsSuggestions,
+			String tsOtherActivity, String tsFeedback) {
+		super();
+		this.tsId = tsId;
+		this.prjId = prjId;
+		this.empId = empId;
+		this.tsActivity = tsActivity;
+		this.tsDate = tsDate;
+		this.tsNoOfHrs = tsNoOfHrs;
+		this.tsApproved = tsApproved;
+		this.tsApprovedBy = tsApprovedBy;
+		this.tsRejectedReasons = tsRejectedReasons;
+		this.tsNotes = tsNotes;
+		this.tsSuggestions = tsSuggestions;
+		this.tsOtherActivity = tsOtherActivity;
+		this.tsFeedback = tsFeedback;
+	}
 
-public TimeSheet(Long tsId, List<Project> prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
-		String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsSuggestions,
-		String tsOtherActivity, String tsFeedback) {
-	super();
-	this.tsId = tsId;
-	this.prjId = prjId;
-	this.empId = empId;
-	this.tsActivity = tsActivity;
-	this.tsDate = tsDate;
-	this.tsNoOfHrs = tsNoOfHrs;
-	this.tsApproved = tsApproved;
-	this.tsApprovedBy = tsApprovedBy;
-	this.tsRejectedReasons = tsRejectedReasons;
-	this.tsNotes = tsNotes;
-	this.tsSuggestions = tsSuggestions;
-	this.tsOtherActivity = tsOtherActivity;
-	this.tsFeedback = tsFeedback;
-}
-public TimeSheet() {
-	// TODO Auto-generated constructor stub
-}
-/**
- * @return the tsId
- */
-public Long getTsId() {
-	return tsId;
-}
-/**
- * @param tsId the tsId to set
- */
-public void setTsId(Long tsId) {
-	this.tsId = tsId;
-}
+	public TimeSheet() {
 
-/**
- * @return the prjId
- */
-public List<Project> getPrjId() {
-	return prjId;
-}
-/**
- * @param prjId the prjId to set
- */
-public void setPrjId(List<Project> prjId) {
-	this.prjId = prjId;
-}
-/**
- * @return the empId
- */
-public Employee getEmpId() {
-	return empId;
-}
-/**
- * @param empId the empId to set
- */
-public void setEmpId(Employee empId) {
-	this.empId = empId;
-}
-/**
- * @return the tsActivity
- */
-public String getTsActivity() {
-	return tsActivity;
-}
-/**
- * @param tsActivity the tsActivity to set
- */
-public void setTsActivity(String tsActivity) {
-	this.tsActivity = tsActivity;
-}
-/**
- * @return the tsDate
- */
-public Date getTsDate() {
-	return tsDate;
-}
-/**
- * @param tsDate the tsDate to set
- */
-public void setTsDate(Date tsDate) {
-	this.tsDate = tsDate;
-}
-/**
- * @return the tsNoOfHrs
- */
-public String getTsNoOfHrs() {
-	return tsNoOfHrs;
-}
-/**
- * @param tsNoOfHrs the tsNoOfHrs to set
- */
-public void setTsNoOfHrs(String tsNoOfHrs) {
-	this.tsNoOfHrs = tsNoOfHrs;
-}
-/**
- * @return the tsApproved
- */
-public String getTsApproved() {
-	return tsApproved;
-}
-/**
- * @param tsApproved the tsApproved to set
- */
-public void setTsApproved(String tsApproved) {
-	this.tsApproved = tsApproved;
-}
-/**
- * @return the tsApprovedBy
- */
-public String getTsApprovedBy() {
-	return tsApprovedBy;
-}
-/**
- * @param tsApprovedBy the tsApprovedBy to set
- */
-public void setTsApprovedBy(String tsApprovedBy) {
-	this.tsApprovedBy = tsApprovedBy;
-}
-/**
- * @return the tsRejectedReasons
- */
-public String getTsRejectedReasons() {
-	return tsRejectedReasons;
-}
-/**
- * @param tsRejectedReasons the tsRejectedReasons to set
- */
-public void setTsRejectedReasons(String tsRejectedReasons) {
-	this.tsRejectedReasons = tsRejectedReasons;
-}
-/**
- * @return the tsNotes
- */
-public String getTsNotes() {
-	return tsNotes;
-}
-/**
- * @param tsNotes the tsNotes to set
- */
-public void setTsNotes(String tsNotes) {
-	this.tsNotes = tsNotes;
-}
-/**
- * @return the tsSuggestions
- */
-public String getTsSuggestions() {
-	return tsSuggestions;
-}
-/**
- * @param tsSuggestions the tsSuggestions to set
- */
-public void setTsSuggestions(String tsSuggestions) {
-	this.tsSuggestions = tsSuggestions;
-}
-/**
- * @return the tsOtherActivity
- */
-public String getTsOtherActivity() {
-	return tsOtherActivity;
-}
-/**
- * @param tsOtherActivity the tsOtherActivity to set
- */
-public void setTsOtherActivity(String tsOtherActivity) {
-	this.tsOtherActivity = tsOtherActivity;
-}
-/**
- * @return the tsFeedback
- */
-public String getTsFeedback() {
-	return tsFeedback;
-}
-/**
- * @param tsFeedback the tsFeedback to set
- */
-public void setTsFeedback(String tsFeedback) {
-	this.tsFeedback = tsFeedback;
-}
+	}
 
+	public Long getTsId() {
+		return tsId;
+	}
+
+	public void setTsId(Long tsId) {
+		this.tsId = tsId;
+	}
+
+	public Project getPrjId() {
+		return prjId;
+	}
+
+	public void setPrjId(Project prjId) {
+		this.prjId = prjId;
+	}
+
+	public Employee getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(Employee empId) {
+		this.empId = empId;
+	}
+
+
+	public String getTsActivity() {
+		return tsActivity;
+	}
+
+	public void setTsActivity(String tsActivity) {
+		this.tsActivity = tsActivity;
+	}
+
+	public Date getTsDate() {
+		return tsDate;
+	}
+
+	public void setTsDate(Date tsDate) {
+		this.tsDate = tsDate;
+	}
+
+	public String getTsNoOfHrs() {
+		return tsNoOfHrs;
+	}
+
+	public void setTsNoOfHrs(String tsNoOfHrs) {
+		this.tsNoOfHrs = tsNoOfHrs;
+	}
+
+	public String getTsApproved() {
+		return tsApproved;
+	}
+
+	public void setTsApproved(String tsApproved) {
+		this.tsApproved = tsApproved;
+	}
+
+	public String getTsApprovedBy() {
+		return tsApprovedBy;
+	}
+
+	public void setTsApprovedBy(String tsApprovedBy) {
+		this.tsApprovedBy = tsApprovedBy;
+	}
+
+	public String getTsRejectedReasons() {
+		return tsRejectedReasons;
+	}
+
+	public void setTsRejectedReasons(String tsRejectedReasons) {
+		this.tsRejectedReasons = tsRejectedReasons;
+	}
+
+	public String getTsNotes() {
+		return tsNotes;
+	}
+
+	public void setTsNotes(String tsNotes) {
+		this.tsNotes = tsNotes;
+	}
+
+	public String getTsSuggestions() {
+		return tsSuggestions;
+	}
+
+	public void setTsSuggestions(String tsSuggestions) {
+		this.tsSuggestions = tsSuggestions;
+	}
+
+	public String getTsOtherActivity() {
+		return tsOtherActivity;
+	}
+
+	public void setTsOtherActivity(String tsOtherActivity) {
+		this.tsOtherActivity = tsOtherActivity;
+	}
+
+	public String getTsFeedback() {
+		return tsFeedback;
+	}
+
+	public void setTsFeedback(String tsFeedback) {
+		this.tsFeedback = tsFeedback;
+	}
 
 }

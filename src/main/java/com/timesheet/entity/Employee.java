@@ -1,5 +1,6 @@
 package com.timesheet.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Employee")
-public class Employee {
+public class Employee implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 @Id
 @Column(name="EMP_ID",length=10)
@@ -37,9 +39,10 @@ String empUserName;
 String empPassword;
 @OneToOne
 Roles role;
+
 public Employee(Long empId, String empName, String empDesignationId, Date empJoinDate, String empSkills,
 		String empDepartmentId, String empNotes, String empEmail, String empPhone, String empUserName,
-		String empPassword) {
+		String empPassword, Roles role) {
 	super();
 	this.empId = empId;
 	this.empName = empName;
@@ -52,6 +55,7 @@ public Employee(Long empId, String empName, String empDesignationId, Date empJoi
 	this.empPhone = empPhone;
 	this.empUserName = empUserName;
 	this.empPassword = empPassword;
+	this.role = role;
 }
 /**
  * @return the role

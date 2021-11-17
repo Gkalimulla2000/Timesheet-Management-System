@@ -8,18 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.timesheet.dao.EmployeeRepository;
+import com.timesheet.dao.LeaveRepository;
 import com.timesheet.entity.Employee;
+import com.timesheet.entity.Leave;
+import com.timesheet.entity.Roles;
 
 @Service
 public class EmloyeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	@Autowired
+	private LeaveRepository leaveRepository;
 
 	Employee employee = new Employee();
 
 	@Override
 	public ArrayList<Employee> getAllEmps() {
-		// TODO Auto-generated method stub
+
 		return (ArrayList<Employee>) employeeRepository.findAll();
 	}
 
@@ -32,34 +37,30 @@ public class EmloyeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee getEmpById(Long empId) {
 		Optional<Employee> employee = employeeRepository.findById(empId);
-	
+
 		return employee.get();
 	}
 
 	@Override
 	public void updateEmp(Employee emp) {
-		// TODO Auto-generated method stub
+
 		employeeRepository.save(emp);
 
 	}
 
 	@Override
 	public void changePassword(String empPassword, Long empId) {
-		// TODO Auto-generated method stub
+
 		Employee emp = employeeRepository.findById(empId).get();
 		emp.setEmpPassword(empPassword);
 		employeeRepository.save(emp);
-		/*
-		 * for(Employee id:emp) { if(id.equals(empId)) {
-		 * 
-		 * EmployeeRepository.changePassword(empPassword); } }
-		 */
+
 	}
 
 	@Override
-	public List<Employee> getLeave() {
+	public List<Leave> getLeave() {
 
-		return null;
+		return (List<Leave>) leaveRepository.findAll();
 	}
 
 	@Override
@@ -77,9 +78,16 @@ public class EmloyeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void deleteEmployeeByID(Long empId) {
-		// TODO Auto-generated method stub
 
 		employeeRepository.deleteById(empId);
+	}
+
+	@Override
+	public void updateRole(Roles role, Long empId) {
+		Employee emp = employeeRepository.findById(empId).get();
+		emp.setRole(role);
+		employeeRepository.save(emp);
+
 	}
 
 }

@@ -1,30 +1,38 @@
 package com.timesheet.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Team")
 public class Team {
+	public Team() {
+		
+	}
 	@Id
 	@Column(name="TEAM_ID",length=10)
-	Long teamId;
+	private Long teamId;
 	@Column(name="TEAM_NAME",length=20)
-	String teamName;
+	private String teamName;
 	@Column(name="TEAM_LEADER",length=20)
-	String teamLeader;
+	private String teamLeader;
 	@Column(name="TEAM_NOTES",length=50)
-	String teamNotes;
+	private String teamNotes;
 	@OneToOne
 	@JoinColumn(name="TEAM_PROJ")
-	Project prjId;
-	@Column(name="TEAM_MEMBERS",length=50)
-	String teamMembers;
-	public Team(Long teamId, String teamName, String teamLeader, String teamNotes, Project prjId, String teamMembers) {
+	private Project prjId;
+	@OneToMany
+	@JoinColumn(name="Team_Members")
+	private List<Employee> teamMembers;
+	
+	public Team(Long teamId, String teamName, String teamLeader, String teamNotes, Project prjId, List<Employee> teamMembers) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
@@ -63,10 +71,10 @@ public class Team {
 	public void setPrjId(Project prjId) {
 		this.prjId = prjId;
 	}
-	public String getTeamMembers() {
+	public List<Employee> getTeamMembers() {
 		return teamMembers;
 	}
-	public void setTeamMembers(String teamMembers) {
+	public void setTeamMembers(List<Employee> teamMembers) {
 		this.teamMembers = teamMembers;
 	}
 	@Override

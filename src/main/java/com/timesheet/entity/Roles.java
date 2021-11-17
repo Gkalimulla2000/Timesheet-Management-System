@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
 public class Roles {
+	public Roles() {
+		
+	}
 	@Id
 	@Column(name="ROLE_ID")
 	Long roleId;

@@ -8,52 +8,52 @@ import org.springframework.stereotype.Service;
 
 import com.timesheet.dao.ProjectRepository;
 import com.timesheet.entity.Project;
+
 @Service
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
-	private ProjectRepository ProjectRepository;
+	private ProjectRepository projectRepository;
+
 	@Override
 	public ArrayList<Project> getAllProjects() {
-		// TODO Auto-generated method stub
-		return (ArrayList<Project>) ProjectRepository.findAll();
+
+		return (ArrayList<Project>) projectRepository.findAll();
 	}
 
 	@Override
 	public void insertPrj(Project project) {
-		// TODO Auto-generated method stub
-		ProjectRepository.save(project);
+
+		projectRepository.save(project);
 	}
 
 	@Override
 	public void updatePrj(Project prj) {
-		// TODO Auto-generated method stub
-		ProjectRepository.save(prj);
+
+		projectRepository.save(prj);
 	}
 
 	@Override
-	public Enum ProjectStatus(Project p) {
-		
-		return p.getStatus();
-		
-		
+	public String ProjectStatus(Long prjId) {
+		Project p = projectRepository.findById(prjId).get();
+
+		return projectRepository.save(p).getStatus();
+
 	}
 
 	@Override
 	public void insertProjectDates(Date prjStartDate, Date prjEndDate) {
-		// TODO Auto-generated method stub
-		Project p=new Project();
+		Project p = new Project();
 		p.setPrjStartDate(prjStartDate);
 		p.setPrjEndDate(prjEndDate);
-		
-		ProjectRepository.save(p);
-		
+		projectRepository.save(p);
+
 	}
 
 	@Override
-	public String getProjectBrief() {
-		// TODO Auto-generated method stub
-		Project p=new Project();
-		return p.getPrjClientBrief();
+	public String getProjectBrief(Long prjId) {
+		Project p =projectRepository.findById(prjId).get();
+		
+		return projectRepository.save(p).getPrjClientBrief();
 	}
 
 }

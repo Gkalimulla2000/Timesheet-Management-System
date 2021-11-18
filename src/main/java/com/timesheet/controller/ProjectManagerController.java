@@ -3,13 +3,10 @@ package com.timesheet.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,16 +30,11 @@ public class ProjectManagerController {
 	@Autowired
 	private TeamService teamService;
 
-	@RequestMapping(value = "/addEmpToTeam/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping( "/addEmpToTeam/")
 	public String addEmpToTeam(@RequestBody List<Employee> employee, @RequestParam Long teamId) {
 		return teamService.addEmpToTeam(employee, teamId);
 
 	}
-//@RequestMapping(value = "/payments", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//public @ResponseBody List<Payment> batchCreate(@RequestBody List<Payment> payments) {
-//return paymentService.create(payments);
-//}
-
 	@GetMapping("/getTeamMembers/")
 	public List<Team> getTeamMembers() {
 		return teamService.getTeamMembers();
@@ -55,7 +47,7 @@ public class ProjectManagerController {
 	}
 
 	@GetMapping("/PM/getProjectBrief")
-	public String GetProjectBrief(@RequestParam Long prjId) {
+	public String getProjectBrief(@RequestParam Long prjId) {
 		return projectService.getProjectBrief(prjId);
 	}
 
@@ -65,11 +57,5 @@ public class ProjectManagerController {
 		employeeService.changePassword(empPassword, empId);
 
 	}
-	
-//	@GetMapping("/assignRoles")
-//		public String assignRoles(@RequestBody Team team) {
-//			return teamService.assignRole(team);
-//		}
-//	
 
 }

@@ -15,64 +15,44 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "TimeSheet")
 public class TimeSheet implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "TS_ID", length = 10)
-	Long tsId;
+	private Long tsId;
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Project prjId;
+	private Project prjId;
 	@ManyToOne(targetEntity = Employee.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "EMP_TIMESHEET")
-	Employee empId;
+	private Employee empId;
 	@Column(name = "TS_ACTIVITY", length = 20)
-	String tsActivity;
+	private String tsActivity;
 	@Column(name = "TS_DATE")
-	Date tsDate;
+	private Date tsDate;
 	@Column(name = "TS_NO_OF_HRS", length = 10)
-	String tsNoOfHrs;
+	private String tsNoOfHrs;
 	@Column(name = "TS_APPROVED", length = 20)
-	String tsApproved;
+	private String tsApproved;
 	@Column(name = "TS_APPROVED_BY", length = 20)
-	String tsApprovedBy;
+	private String tsApprovedBy;
 	@Column(name = "TS_REJECTED_REASONS", length = 30)
-	String tsRejectedReasons;
+	private String tsRejectedReasons;
 	@Column(name = "TS_NOTES", length = 30)
-	String tsNotes;
+	private String tsNotes;
 	@Column(name = "TS_SUGGESTIONS", length = 30)
-	String tsSuggestions;
+	private String tsSuggestions;
 	@Column(name = "TS_OTHER_ACTIVITY", length = 30)
-	String tsOtherActivity;
+	private String tsOtherActivity;
 	@Column(name = "TS_FEEDBACK", length = 20)
-	String tsFeedback;
+	private String tsFeedback;
 
-	public TimeSheet(Long tsId, Project prjId, Employee empId, String tsActivity, Date tsDate, String tsNoOfHrs,
-			String tsApproved, String tsApprovedBy, String tsRejectedReasons, String tsNotes, String tsSuggestions,
-			String tsOtherActivity, String tsFeedback) {
-		super();
-		this.tsId = tsId;
-		this.prjId = prjId;
-		this.empId = empId;
-		this.tsActivity = tsActivity;
-		this.tsDate = tsDate;
-		this.tsNoOfHrs = tsNoOfHrs;
-		this.tsApproved = tsApproved;
-		this.tsApprovedBy = tsApprovedBy;
-		this.tsRejectedReasons = tsRejectedReasons;
-		this.tsNotes = tsNotes;
-		this.tsSuggestions = tsSuggestions;
-		this.tsOtherActivity = tsOtherActivity;
-		this.tsFeedback = tsFeedback;
-	}
-
+	
 	public TimeSheet() {
-
+		super();
 	}
 
 	public Long getTsId() {

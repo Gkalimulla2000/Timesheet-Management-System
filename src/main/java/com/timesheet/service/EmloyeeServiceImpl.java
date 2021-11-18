@@ -1,6 +1,5 @@
 package com.timesheet.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,9 +11,11 @@ import com.timesheet.dao.LeaveRepository;
 import com.timesheet.entity.Employee;
 import com.timesheet.entity.Leave;
 import com.timesheet.entity.Roles;
+import com.timesheet.exception.NoEmployeeFoundException;
 
 @Service
 public class EmloyeeServiceImpl implements EmployeeService {
+	public static final String NO_RECORD_FOUND = "No Record Found";
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	@Autowired
@@ -23,9 +24,9 @@ public class EmloyeeServiceImpl implements EmployeeService {
 	Employee employee = new Employee();
 
 	@Override
-	public ArrayList<Employee> getAllEmps() {
+	public List<Employee> getAllEmps() {
 
-		return (ArrayList<Employee>) employeeRepository.findAll();
+		return (List<Employee>) employeeRepository.findAll();
 	}
 
 	@Override
@@ -36,9 +37,11 @@ public class EmloyeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee getEmpById(Long empId) {
-		Optional<Employee> employee = employeeRepository.findById(empId);
-
-		return employee.get();
+		Optional<Employee> emp = employeeRepository.findById(empId);
+		if (emp.isPresent()) {
+			return emp.get();
+		} else
+			throw new NoEmployeeFoundException(NO_RECORD_FOUND);
 	}
 
 	@Override
@@ -51,9 +54,11 @@ public class EmloyeeServiceImpl implements EmployeeService {
 	@Override
 	public void changePassword(String empPassword, Long empId) {
 
-		Employee emp = employeeRepository.findById(empId).get();
-		emp.setEmpPassword(empPassword);
-		employeeRepository.save(emp);
+		Optional<Employee> emp = employeeRepository.findById(empId);
+		if (emp.isPresent()) {
+			emp.get().setEmpPassword(empPassword);
+			employeeRepository.save(emp.get());
+		}
 
 	}
 
@@ -61,12 +66,6 @@ public class EmloyeeServiceImpl implements EmployeeService {
 	public List<Leave> getLeave() {
 
 		return (List<Leave>) leaveRepository.findAll();
-	}
-
-	@Override
-	public List<Employee> getMonthLeaveReport() {
-
-		return null;
 	}
 
 	@Override
@@ -84,15 +83,17 @@ public class EmloyeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void updateRole(Roles role, Long empId) {
-		Employee emp = employeeRepository.findById(empId).get();
-		emp.setRole(role);
-		employeeRepository.save(emp);
+		Optional<Employee> emp = employeeRepository.findById(empId);
+		if (emp.isPresent()) {
+			emp.get().setRole(role);
+			employeeRepository.save(emp.get());
+		}
 
 	}
 
 	@Override
 	public String employeeReport() {
-		
+
 		return employee.getEmpNotes();
 	}
 

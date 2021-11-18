@@ -1,4 +1,4 @@
-package com.timesheet.TimeSheetManagementSystem;
+package com.timesheet;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -13,31 +13,20 @@ import javax.persistence.Table;
 @Table(name="Client")
 public class Client {
 public Client() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 @Id
 @Column(name="CLIENT_ID",nullable=false)
-Long clientId;
+private Long clientId;
 @Column(name="CLIENT_NAME",nullable=false)
-String clientName;
+private String clientName;
 @Column(name="CLIENT_ADDRESS",nullable=false)
-String clientAddress;
+private String clientAddress;
 @Column(name="CLIENT_EMAIL_ID",nullable=false)
-String clientEmailId;
+private String clientEmailId;
 @OneToOne
-Project prjName;
-
-
-public Client(Long clientId, String clientName, String clientCompany, String clientEmailId, Project prjName, String clientAddress) {
-super();
-this.clientId = clientId;
-this.clientName = clientName;
-this.clientAddress = clientAddress;
-this.clientEmailId = clientEmailId;
-this.prjName = prjName;
-}
-
+private Project prjName;
 
 public Long getClientId() {
 return clientId;

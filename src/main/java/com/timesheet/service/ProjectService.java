@@ -1,8 +1,7 @@
 package com.timesheet.service;
 
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 import com.timesheet.entity.Project;
 
@@ -10,14 +9,10 @@ import com.timesheet.entity.Project;
 
 public interface ProjectService {
 
-public ArrayList<Project> getAllProjects();//
+public List<Project> getAllProjects();//
 public void insertPrj(Project project);//
 public void updatePrj(Project prj,Long prjId);//
-public String ProjectStatus(Long prjId);
-public void insertProjectDates(Date prjStartDate, Date prjEndDate);
+public String projectStatus(Long prjId);
 public String getProjectBrief(Long prjId);//
-
-
-
 
 }

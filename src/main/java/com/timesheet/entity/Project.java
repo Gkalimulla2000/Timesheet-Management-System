@@ -14,56 +14,38 @@ public class Project implements Serializable{
 	private static final long serialVersionUID = 1L;
 @Id
 @Column(name="PRJ_ID",length=10)
-Long prjId;
+private Long prjId;
 @Column(name="PRJ_NAME",length=20)
-String prjName;
+private String prjName;
 @Column(name="PRJ_CLIENT_NAME",length=10)
-String prjClientName;
+private String prjClientName;
 @Column(name="PRJ_CLIENT_BRIEF",length=10)
-String prjClientBrief;
+private String prjClientBrief;
 @Column(name="PRJ_CLIENT_MANAGER",length=20)
-String prjClientManager;
+private String prjClientManager;
 @Column(name="PRJ_CLIENT_EMIALID",length=20)
-String prjClientEmailId;
+private String prjClientEmailId;
 @Column(name="PRJ_OS_ID",length=50)
-String prjOsId;
+private String prjOsId;
 @Column(name="PRJ_DB_ID",length=20)
-String prjDbIj;
+private String prjDbIj;
 @Column(name="PRJ_APP_SERVER_ID",length=20)
-String prjAppServerId;
+private String prjAppServerId;
 @Column(name="PRJ_PM_NAME",length=20)
-String prjPmName;
+private String prjPmName;
 @Column(name="PRJ_PL",length=20)
-String prjPl;
+private String prjPl;
 @Column(name="PRJ_NOTES",length=50)
-String prjNotes;
+private String prjNotes;
 @Column(name="PRJ_START_DATE")
-Date prjStartDate;
+private Date prjStartDate;
 @Column(name="PRJ_END_DATE")
-Date prjEndDate;
+private Date prjEndDate;
 @Column(name="PRJ_STATUS",length=20)
-String status;
-public Project(Long prjId, String prjName, String prjClientName, String prjClientBrief, String prjClientManager,
-		String prjClientEmailId, String prjOsId, String prjDbIj, String prjAppServerId, String prjPmName, String prjPl,
-		String prjNotes, Date prjStartDate, Date prjEndDate, String status) {
-	super();
-	this.prjId = prjId;
-	this.prjName = prjName;
-	this.prjClientName = prjClientName;
-	this.prjClientBrief = prjClientBrief;
-	this.prjClientManager = prjClientManager;
-	this.prjClientEmailId = prjClientEmailId;
-	this.prjOsId = prjOsId;
-	this.prjDbIj = prjDbIj;
-	this.prjAppServerId = prjAppServerId;
-	this.prjPmName = prjPmName;
-	this.prjPl = prjPl;
-	this.prjNotes = prjNotes;
-	this.prjStartDate = prjStartDate;
-	this.prjEndDate = prjEndDate;
-	this.status = status;
-}
+private String status;
+
 public Project() {
+	super();
 }
 public Long getPrjId() {
 	return prjId;

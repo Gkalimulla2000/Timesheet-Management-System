@@ -13,9 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Team")
 public class Team {
-	public Team() {
-		
-	}
 	@Id
 	@Column(name="TEAM_ID",length=10)
 	private Long teamId;
@@ -32,14 +29,8 @@ public class Team {
 	@JoinColumn(name="Team_Members")
 	private List<Employee> teamMembers;
 	
-	public Team(Long teamId, String teamName, String teamLeader, String teamNotes, Project prjId, List<Employee> teamMembers) {
+	public Team() {
 		super();
-		this.teamId = teamId;
-		this.teamName = teamName;
-		this.teamLeader = teamLeader;
-		this.teamNotes = teamNotes;
-		this.prjId = prjId;
-		this.teamMembers = teamMembers;
 	}
 	public Long getTeamId() {
 		return teamId;

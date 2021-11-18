@@ -9,6 +9,5 @@ public interface LeaveService {
 
 	void applyLeave(Leave leave);
 	List<Leave> getAllLeave();
-	//List<Leave> getEmpLeave(Long empId);
 	List<Leave> getMonthLeaveReport(Date fromDate,Date toDate);
 }

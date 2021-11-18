@@ -1,6 +1,5 @@
 package com.timesheet.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -45,15 +44,15 @@ public class TimeSheetServiceImpl implements TimeSheetService {
 	}
 
 	@Override
-	public ArrayList<TimeSheet> getAllListOfTimesheet(Long empId) {
+	public List<TimeSheet> getAllListOfTimesheet(Long empId) {
 
-		return (ArrayList<TimeSheet>) timeSheetRepository.findAll();
+		return (List<TimeSheet>) timeSheetRepository.findAll();
 	}
 
 	@Override
-	public void updateTimeSheet(TimeSheet TimeSheet) {
+	public void updateTimeSheet(TimeSheet timeSheet) {
 
-		timeSheetRepository.save(TimeSheet);
+		timeSheetRepository.save(timeSheet);
 
 	}
 

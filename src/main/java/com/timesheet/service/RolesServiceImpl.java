@@ -1,6 +1,6 @@
 package com.timesheet.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +22,9 @@ public void insertRole(Roles roles) {
 //	roles.setRoleName(RoleName);
 rolesRepository.save(roles);
 }
-public ArrayList<Roles> getAllRoles(){
+public List<Roles> getAllRoles(){
 	
-return(ArrayList<Roles>) rolesRepository.findAll();
+return(List<Roles>) rolesRepository.findAll();
 }
 
 

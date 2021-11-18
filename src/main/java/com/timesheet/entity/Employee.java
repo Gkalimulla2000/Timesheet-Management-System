@@ -16,62 +16,42 @@ public class Employee implements Serializable{
 	
 @Id
 @Column(name="EMP_ID",length=10)
-Long empId;
+private Long empId;
 @Column(name="EMP_NAME",length=20)
-String empName;
+private String empName;
 @Column(name="EMP_DESIGNATION_ID",length=10)
-String empDesignationId;
+private String empDesignationId;
 @Column(name="EMP_JOIN_DATE")
-Date empJoinDate;
+private Date empJoinDate;
 @Column(name="EMP_SKILLS",length=20)
-String empSkills;
+private String empSkills;
 @Column(name="EMP_DEPARTMENT_ID",length=20)
-String empDepartmentId;
+private String empDepartmentId;
 @Column(name="EMP_NOTES",length=50)
-String empNotes;
+private String empNotes;
 @Column(name="EMP_EMIAL",length=20)
-String empEmail;
+private String empEmail;
 @Column(name="EMP_PHONE",length=20)
-String empPhone;
+private String empPhone;
 @Column(name="EMP_USENAME",length=20)
-String empUserName;
+private String empUserName;
 @Column(name="EMP_PASSWORD",length=20)
-String empPassword;
+private String empPassword;
 @OneToOne
-Roles role;
+private Roles role;
 
-public Employee(Long empId, String empName, String empDesignationId, Date empJoinDate, String empSkills,
-		String empDepartmentId, String empNotes, String empEmail, String empPhone, String empUserName,
-		String empPassword, Roles role) {
+
+public Employee() {
 	super();
-	this.empId = empId;
-	this.empName = empName;
-	this.empDesignationId = empDesignationId;
-	this.empJoinDate = empJoinDate;
-	this.empSkills = empSkills;
-	this.empDepartmentId = empDepartmentId;
-	this.empNotes = empNotes;
-	this.empEmail = empEmail;
-	this.empPhone = empPhone;
-	this.empUserName = empUserName;
-	this.empPassword = empPassword;
-	this.role = role;
 }
-/**
- * @return the role
- */
 public Roles getRole() {
 	return role;
 }
-/**
- * @param role the role to set
- */
+
 public void setRole(Roles role) {
 	this.role = role;
 }
-public Employee() {
-	// TODO Auto-generated constructor stub
-}
+
 public Long getEmpId() {
 	return empId;
 }

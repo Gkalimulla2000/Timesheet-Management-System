@@ -23,6 +23,7 @@ import com.timesheet.service.LeaveService;
 @RestController
 public class EmployeeController {
 	public static final String NO_RECORD_FOUND = "No Record Found";
+	public static final String RECORD_ALREADY_EXIST = "Record already exixts";
 	@Autowired
 	private EmployeeService employeeService;
 	@Autowired
@@ -59,14 +60,14 @@ public class EmployeeController {
 
 	@PostMapping(value = "/emp/changePassword/{empId}")
 	@ResponseBody
-	public void changePassword(@RequestParam String empPassword, @PathVariable Long empId) {
-		Employee employee = new Employee();
+	public String changePassword(@RequestParam String empPassword, @PathVariable Long empId) {
+		Employee employee =employeeService.getEmpById(empId);
 		String existingPassword = employee.getEmpPassword();
 		if (existingPassword.equals(empPassword)) {
-			throw new RecordAlreadyPresentException(NO_RECORD_FOUND);
+			throw new RecordAlreadyPresentException(RECORD_ALREADY_EXIST);
 		}
 		employeeService.changePassword(empPassword, empId);
-
+		return empPassword;
 	}
 
 	@PostMapping(value = "/emp/applyForLeave")

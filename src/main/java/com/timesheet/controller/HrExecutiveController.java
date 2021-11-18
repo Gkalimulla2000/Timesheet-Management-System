@@ -20,6 +20,8 @@ import com.timesheet.service.LeaveService;
 @RestController
 public class HrExecutiveController {
 	public static final String NO_RECORD_FOUND = "No Record Found";
+	public static final String RECORD_ALREADY_EXIST = "record already exists";
+	
 	@Autowired
 	private EmployeeService employeeService;
 	@Autowired
@@ -56,10 +58,10 @@ public class HrExecutiveController {
 	@GetMapping(value = "/HR/emp/changePassword/{empId}")
 	@ResponseBody
 	public String changePassword(@RequestParam String empPassword, @PathVariable Long empId) {
-		Employee employee = new Employee();
+		Employee employee =employeeService.getEmpById(empId);
 		String existingPassword = employee.getEmpPassword();
 		if (existingPassword.equals(empPassword)) {
-			throw new RecordAlreadyPresentException(NO_RECORD_FOUND);
+			throw new RecordAlreadyPresentException(RECORD_ALREADY_EXIST);
 		}
 		employeeService.changePassword(empPassword, empId);
 		return empPassword;

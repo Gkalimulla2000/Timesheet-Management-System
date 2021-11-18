@@ -13,6 +13,7 @@ import com.timesheet.dao.ProjectRepository;
 import com.timesheet.dao.TimeSheetRepository;
 import com.timesheet.entity.Employee;
 import com.timesheet.entity.TimeSheet;
+import com.timesheet.exception.NoEmployeeFoundException;
 
 @Service
 public class TimeSheetServiceImpl implements TimeSheetService {
@@ -22,7 +23,7 @@ public class TimeSheetServiceImpl implements TimeSheetService {
 	private ProjectRepository projectRepository;
 	@Autowired
 	private EmployeeRepository employeeRepository;
-	TimeSheet timesheet = new TimeSheet();
+	TimeSheet timesheet ;
 
 //@Override
 //public void dailyTimesheet(Long prjId,Date Date, String tsNoOfHrs,	String typeOfWork, String discription)
@@ -64,19 +65,26 @@ if(employee.isPresent()) {
 		timesheet.setTsApprovedBy(tsApprovedBy);
 		timesheet.setTsRejectedReasons(tsRejectedReasons);
 		timeSheetRepository.save(timesheet);
+}else {
+	throw new NoEmployeeFoundException("No employee with this id");
 }
 return "approved Succesfully";
 	} 
 
 	@Override
-	public List<Employee> getTimesheetReportForGivenPeriod(Date tsDate, String tsNoOfHrs) {
+	public List<TimeSheet> getTimesheetReportForGivenPeriod(Date tsDate, String tsNoOfHrs) {
 		
-		return null;
+//	if(timesheet.getTsDate().equals(tsDate) && timesheet.getTsNoOfHrs().equals(tsNoOfHrs))
+//			 timeSheetRepository.findAll();
+//		else
+//			throw new NoEmployeeFoundException("No timeSheet Found");
+		return  (List<TimeSheet>) timeSheetRepository.findAll();
+		 
 	}
 
 	@Override
-	public List<Employee> getTimesheetReportForGivenDate(Date tsDate) {
+	public List<TimeSheet> getTimesheetReportForGivenDate(Date tsDate) {
 		
-		return null;
+		return (List<TimeSheet>) timeSheetRepository.findAll();
 	}
 }

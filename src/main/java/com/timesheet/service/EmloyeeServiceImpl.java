@@ -90,4 +90,10 @@ public class EmloyeeServiceImpl implements EmployeeService {
 
 	}
 
+	@Override
+	public String employeeReport() {
+		
+		return employee.getEmpNotes();
+	}
+
 }

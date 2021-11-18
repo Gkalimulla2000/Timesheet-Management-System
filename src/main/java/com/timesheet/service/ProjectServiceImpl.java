@@ -2,6 +2,7 @@ package com.timesheet.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void updatePrj(Project prj) {
-
+	public void updatePrj(Project prj,Long prjId) {
+ Project proj=projectRepository.findById(prjId).get();
+ projectRepository.delete(proj);
 		projectRepository.save(prj);
 	}
 

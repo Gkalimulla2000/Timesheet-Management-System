@@ -20,5 +20,7 @@ public interface EmployeeService {
 	public void deleteAllEmployees();
 	public void deleteEmployeeByID(Long id);
 	public void updateRole(Roles role, Long empId);
+	public String employeeReport();
+	
 	
 }

@@ -40,8 +40,8 @@ projectService.insertPrj(project);
 }
 
 @PutMapping(value="/prj/updatePrj/{prjId}")
-public void updatePrj(@RequestBody Project project ,@PathVariable Long EmpId) {
-projectService.updatePrj(project);
+public void updatePrj(@RequestBody Project project ,@PathVariable Long prjId) {
+projectService.updatePrj(project,prjId);
 }
 /*
 @PostMapping("/insertProjectDates")

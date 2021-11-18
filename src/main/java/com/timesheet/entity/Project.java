@@ -7,10 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-/*enum STATUS{
-	
-	Not,Deleted;
-}*/
+
 @Entity
 @Table(name="Project")
 public class Project implements Serializable{

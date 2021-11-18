@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.timesheet.entity.Employee;
+import com.timesheet.entity.TimeSheet;
 import com.timesheet.service.EmployeeService;
 import com.timesheet.service.TimeSheetService;
 
@@ -25,22 +26,24 @@ private TimeSheetService timesheetService;
 
 
 
-@RequestMapping(value = "/employeedetailsReport", method = RequestMethod.GET)
-public List<Employee> employeeReport()
-{
-List<Employee> emp = employeeService.getAllEmps();
 
-return emp;
+@RequestMapping(value = "/employeedetailsReport", method = RequestMethod.GET)
+public String employeeReport()
+{
+	
+String employee = employeeService.employeeReport();
+
+return employee;
 }
 
 
 
 @GetMapping("/timesheetReportForGivenPeriod")
-public List<Employee> getTimesheetReportForGivenPeriod( @RequestParam("tsDate") Date tsDate,
+public List<TimeSheet> getTimesheetReportForGivenPeriod( @RequestParam("tsDate") Date tsDate,
 @RequestParam("tsNoOfHrs") String tsNoOfHrs) {
 
-List<Employee> employeeList = timesheetService.getTimesheetReportForGivenPeriod(tsDate,tsNoOfHrs);
-return employeeList;
+List<TimeSheet> timeSheetList = timesheetService.getTimesheetReportForGivenPeriod(tsDate,tsNoOfHrs);
+return timeSheetList;
 
 
 }
@@ -48,10 +51,10 @@ return employeeList;
 
 
 @GetMapping("/timesheetReportForGivenDate")
-public List<Employee> getTimesheetReportForGivenDate(@RequestParam("tsDate") Date tsDate) {
+public List<TimeSheet> getTimesheetReportForGivenDate(@RequestParam("tsDate") Date tsDate) {
 
-List<Employee> employeeList = timesheetService.getTimesheetReportForGivenDate(tsDate);
-return employeeList;
+	List<TimeSheet> timeSheetList = timesheetService.getTimesheetReportForGivenDate(tsDate);
+return timeSheetList;
 
 
 }
